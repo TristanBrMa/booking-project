@@ -1,10 +1,12 @@
-import Calendrier from "./components/Calendrier";
+import AppRoutes from "./routes/AppRoutes";
 import "../src/styles/Calendrier.css";
+import { BrowserRouter } from "react-router-dom";
 function App() {
   return (
     <>
-      <div className="bg-red-500">myvookigproject</div>
-      <Calendrier />
+      <BrowserRouter>
+        <AppRoutes />
+      </BrowserRouter>
     </>
   );
 }
