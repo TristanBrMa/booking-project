@@ -29,13 +29,15 @@ pool.getConnection().catch(() => {
 
 const models = {};
 
-const MessagesManager = require("./MessagesManager");
+const AdminManager = require("./AdminManager");
 
-models.message = new MessagesManager();
-models.message.setDatabase(pool);
+models.user = new AdminManager();
+models.user.setDatabase(pool);
 
-// bonus: use a proxy to personalize error message,
-// when asking for a non existing model
+const ReservationManager = require("./ReservationManager");
+
+models.reservation = new ReservationManager();
+models.reservation.setDatabase(pool);
 
 const handler = {
   get(obj, prop) {

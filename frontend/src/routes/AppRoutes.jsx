@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import AdminPage from "../pages/AdminPage";
-import Calendrier from "../components/Calendrier";
+import Calendrier from "../pages/Calendrier";
 import SignIn from "../pages/SignIn";
 function AppRoutes() {
   return (
