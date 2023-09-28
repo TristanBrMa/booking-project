@@ -5,7 +5,7 @@ const createReservation = (req, res) => {
   models.reservation
     .create(reservation)
     .then(([result]) => {
-      res.location(`/message/${result.insertId}`).sendStatus(201);
+      res.location(`/reservation/${result.insertId}`).sendStatus(201);
     })
     .catch((err) => {
       console.error(err);
@@ -35,5 +35,30 @@ const deleteReservation = (req, res) => {
       res.sendStatus(500);
     });
 };
+const editReservation = (req, res) => {
+  const item = req.body;
+  if (!item.id) {
+    res.status(400).json({ message: "L'ID de la réservation est requis." });
+    return;
+  }
+  models.reservation
+    .update(item)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
 
-module.exports = { createReservation, getAllReservation, deleteReservation };
+module.exports = {
+  createReservation,
+  getAllReservation,
+  deleteReservation,
+  editReservation,
+};

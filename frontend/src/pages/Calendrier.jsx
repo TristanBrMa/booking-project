@@ -93,6 +93,7 @@ function Calendrier() {
         reservationDate: "",
         reservationHours: "",
       });
+      console.log(formData);
     } catch (error) {
       console.error("Erreur lors de la requête POST :", error);
     }
