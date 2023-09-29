@@ -1,5 +1,4 @@
 import axios from "axios";
-
 import ReservationCard from "../components/ReservationCard";
 import { useEffect, useState } from "react";
 function AdminPage() {
@@ -27,9 +26,11 @@ function AdminPage() {
       .catch((err) => console.error(err));
   };
   return (
-    <div>
-      <h1>Reservation</h1>
-      <div>
+    <div className=" flex flex-col items-center p-5 ">
+      <h1 className="text-3xl font-bold text-blue-900 font-roboto-serif pl-4">
+        Vos demandes de réservation:
+      </h1>
+      <div className="w-full py-5 lg:w-3/6">
         {allReservation &&
           allReservation.map((reservation) => (
             <ReservationCard

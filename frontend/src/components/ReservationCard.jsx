@@ -63,45 +63,49 @@ function ReservationCard({
     deleteReservation(id);
   };
   return (
-    <>
-      <form onSubmit={handleSubmit}>
+    <div className="py-3">
+      <form
+        onSubmit={handleSubmit}
+        className=" flex flex-col  border-blue-900 border-2 rounded-xl mt-3 p-3"
+      >
         <input
           type="text"
           name="firstName"
-          placeholder="Prénom"
           value={formData.firstName}
           onChange={handleChange}
           required
+          className=" m-1 text-blue-900  bg-neutral-300 w-full rounded-lg focus:bg-blue-900 focus:text-white border-2 lg:p-2 lg:input-xl lg:w-full lg:my-3"
         />
         <input
           type="text"
           name="lastName"
-          placeholder="Nom"
           value={formData.lastName}
           onChange={handleChange}
           required
+          className=" m-1 text-blue-900  bg-neutral-300 w-full rounded-lg focus:bg-blue-900 focus:text-white border-2 lg:p-2 lg:input-xl lg:w-full lg:my-3"
         />
         <input
           type="email"
           name="email"
-          placeholder="Email"
           value={formData.email}
           onChange={handleChange}
           required
+          className=" m-1 text-blue-900  bg-neutral-300 w-full rounded-lg focus:bg-blue-900 focus:text-white border-2 lg:p-2 lg:input-xl lg:w-full lg:my-3"
         />
         <input
           type="tel"
           name="phoneNumber"
-          placeholder="Numéro de téléphone"
           value={formData.phoneNumber}
           onChange={handleChange}
           pattern="[0-9]{10}"
           required
+          className=" m-1 text-blue-900  bg-neutral-300 w-full rounded-lg focus:bg-blue-900 focus:text-white border-2 lg:p-2 lg:input-xl lg:w-full lg:my-3"
         />
         <select
           name="reservationDay"
           value={formData.reservationDay}
           onChange={handleChange}
+          className=" m-1 text-blue-900  bg-neutral-300 w-full rounded-lg focus:bg-blue-900 focus:text-white border-2 lg:p-2 lg:input-xl lg:w-full lg:my-3"
         >
           <option value="Mon">Mon</option>
           <option value="Tue">Tue</option>
@@ -117,11 +121,13 @@ function ReservationCard({
           value={formData.reservationDate}
           onChange={handleChange}
           placeholder="Date de la réservation"
+          className=" m-1 text-blue-900  bg-neutral-300 w-full rounded-lg focus:bg-blue-900 focus:text-white border-2 lg:p-2 lg:input-xl lg:w-full lg:my-3"
         />
         <select
           name="reservationHours"
           value={formData.reservationHours}
           onChange={handleChange}
+          className=" m-1 text-blue-900  bg-neutral-300 w-full rounded-lg focus:bg-blue-900 focus:text-white border-2 lg:p-2 lg:input-xl lg:w-full lg:my-3"
         >
           {hours.map((hour) => (
             <option key={hour} value={hour}>
@@ -129,16 +135,23 @@ function ReservationCard({
             </option>
           ))}
         </select>
-        <button
-          onClick={handleDelete}
-          type="button"
-          className="my-3 mx-auto btn bg-rose-700 bg-opacity-75 border-none text-primary"
-        >
-          Supprimer
-        </button>
-        <button type="submit">Modifier</button>
+        <div className=" flex justify-between">
+          <button
+            onClick={handleDelete}
+            type="button"
+            className="my-4 mx-auto btn bg-rose-700 bg-opacity-75 border-none text-white"
+          >
+            Supprimer
+          </button>
+          <button
+            type="submit"
+            className="my-3 mx-auto btn bg-blue-900 bg-opacity-75 border-none text-white"
+          >
+            Modifier
+          </button>
+        </div>
       </form>
-    </>
+    </div>
   );
 }
 export default ReservationCard;

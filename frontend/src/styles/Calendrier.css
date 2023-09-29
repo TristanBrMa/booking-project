@@ -1,11 +1,18 @@
 .react-calendar {
     width: 450px;
-    max-width: 100%;
+    max-width: 90%;
     background: white;
     border-radius: 15px;
     border: 1px solid rgb(209 213 219);
     font-family: Manrope, Helvetica, sans-serif;
     line-height: 1.125em;
+  }
+  .react-calendar__navigation__label {
+   color:#4f46e5;
+   font-weight:bold;
+   font-weight: 700;
+    font-size: 0.8em;
+
   }
   .react-calendar--doubleView {
     width: 700px;
@@ -26,14 +33,33 @@
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
   }
-  
+  .react-calendar__navigation__prev2-button,
+  .react-calendar__navigation__prev-button{
+    color:#4f46e5;
+   font-weight:bold;
+   font-weight: 700;
+    font-size: 0.8em;
+  }
+  .react-calendar__navigation__next2-button,
+  .react-calendar__navigation__next-button{
+    color:#4f46e5;
+   font-weight:bold;
+   font-weight: 700;
+    font-size: 0.8em;
+  }
   /* Custom Navigation Styles */
   @media screen and (max-width: 500px) {
    
-    .react-calendar__navigation__label {
+    /* .react-calendar__navigation__label {
       padding-left: 1rem;
       text-align: left;
-    }
+      font-size:small;
+
+    } */
+    /* .react-calendar {
+   margin-left: auto;
+   margin-right: auto;
+    } */
   }
   
   .react-calendar button {
@@ -48,6 +74,7 @@
     display: flex;
     height: 44px;
     margin-bottom: 1em;
+
   }
   .react-calendar__navigation button {
     min-width: 44px;
@@ -76,8 +103,9 @@
   }
   
   .react-calendar__navigation__label__labelText {
-    font-weight: 500;
-    font-size: 1.05em;
+    font-weight:bold;
+    font-size: 1.50em;
+    
   }
   .react-calendar__navigation__label {
     pointer-events: none;

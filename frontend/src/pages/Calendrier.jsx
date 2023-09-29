@@ -99,81 +99,115 @@ function Calendrier() {
     }
   };
   return (
-    <div className="flex  flex-col items-center ">
-      <Calendar
-        minDate={new Date()}
-        className="    text-black p-2 "
-        view="month"
-        onClickDay={(date) => setDate((prev) => ({ ...prev, justDate: date }))}
-      />
-
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="firstName"
-          placeholder="Prénom"
-          value={formData.firstName}
-          onChange={handleInputChange}
-          required
-        />
-        <input
-          type="text"
-          name="lastName"
-          placeholder="Nom"
-          value={formData.lastName}
-          onChange={handleInputChange}
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleInputChange}
-          required
-        />
-        <input
-          type="tel"
-          name="phoneNumber"
-          placeholder="Numéro de téléphone"
-          value={formData.phoneNumber}
-          onChange={handleInputChange}
-          pattern="[0-9]{10}"
-          required
-        />
-        <input
-          type="text"
-          name="selectedDay"
-          value={handleChangeDay(date.justDate)}
-          placeholder="date de la réservation"
-          readOnly
-        />
-        <input
-          type="text"
-          name="selectedDate"
-          value={handleChangeDate(date.justDate)}
-          placeholder="date de la réservation"
-          readOnly
+    <>
+      <div className="flex  flex-col items-center justify-center h-screen lg:h-full p-3 pb-7">
+        <h1 className="absolute top-5 left-5  text-3xl font-bold text-blue-900 font-roboto-serif lg:mb-10 lg:text-4xl">
+          Réservation :
+        </h1>
+        <p className="font-roboto text-blue-900 my-3 mt-20  lg:text-xl">
+          Pour faire votre réservation, séléctionner une date
+        </p>
+        <Calendar
+          minDate={new Date()}
+          view="month"
+          onClickDay={(date) =>
+            setDate((prev) => ({ ...prev, justDate: date }))
+          }
+          className="lg:w-3/6 lg:p-7"
         />
 
-        <select
-          name="selectedTime"
-          value={date.dateTime ? format(date.dateTime, "HH:mm") : ""}
-          onChange={handleChangeHours}
-          required
-        >
-          <option value="" disabled>
-            Sélectionnez une heure
-          </option>
-          {times?.map((time, i) => (
-            <option value={format(time, "HH:mm")} key={`time-${i}`}>
-              {format(time, "HH:mm")}
-            </option>
-          ))}
-        </select>
-        <button type="submit">Réserver</button>
-      </form>
-    </div>
+        {date.justDate && (
+          <>
+            <div className=" flex  justify-center mt-5  ">
+              <p className="font-roboto text-blue-900 lg:text-xl ">
+                Puis remplisser les champs ci-dessous :
+              </p>
+            </div>
+            <form
+              onSubmit={handleSubmit}
+              className=" flex flex-col w-80 border-blue-900 border-2 rounded-xl mt-3 p-3 lg:w-4/6 lg:p-6 "
+            >
+              <input
+                type="text"
+                name="firstName"
+                placeholder="Prénom"
+                value={formData.firstName}
+                onChange={handleInputChange}
+                required
+                className=" m-1 placeholder:text-blue-900  bg-neutral-300 w-full rounded-lg focus:bg-blue-900 focus:text-white border-2 lg:p-2 lg:input-xl lg:w-full lg:my-3"
+              />
+              <input
+                type="text"
+                name="lastName"
+                placeholder="Nom"
+                value={formData.lastName}
+                onChange={handleInputChange}
+                required
+                className=" m-1 placeholder:text-blue-900  bg-neutral-300 w-full rounded-lg focus:bg-blue-900 focus:text-white border-2 lg:p-2 lg:input-xl lg:w-full lg:my-3"
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={formData.email}
+                onChange={handleInputChange}
+                required
+                className=" m-1 placeholder:text-blue-900  bg-neutral-300 w-full rounded-lg focus:bg-blue-900 focus:text-white border-2 lg:p-2 lg:input-xl lg:w-full lg:my-3"
+              />
+              <input
+                type="tel"
+                name="phoneNumber"
+                placeholder="Numéro de téléphone"
+                value={formData.phoneNumber}
+                onChange={handleInputChange}
+                pattern="[0-9]{10}"
+                required
+                className=" m-1 placeholder:text-blue-900  bg-neutral-300 w-full rounded-lg focus:bg-blue-900 focus:text-white border-2 lg:p-2 lg:input-xl lg:w-full lg:my-3"
+              />
+              <input
+                type="text"
+                name="selectedDay"
+                value={handleChangeDay(date.justDate)}
+                placeholder="date de la réservation"
+                readOnly
+                className=" m-1 text-blue-900  bg-neutral-300 w-full rounded-lg focus:bg-blue-900 focus:text-white border-2 lg:p-2 lg:input-xl lg:w-full lg:my-3"
+              />
+              <input
+                type="text"
+                name="selectedDate"
+                value={handleChangeDate(date.justDate)}
+                placeholder="date de la réservation"
+                readOnly
+                className=" m-1 text-blue-900  bg-neutral-300 w-full rounded-lg focus:bg-blue-900 focus:text-white border-2 lg:p-2 lg:input-xl lg:w-full lg:my-3"
+              />
+
+              <select
+                name="selectedTime"
+                value={date.dateTime ? format(date.dateTime, "HH:mm") : ""}
+                onChange={handleChangeHours}
+                required
+                className=" m-1 text-blue-900  bg-neutral-300 w-full rounded-lg focus:bg-blue-900 focus:text-white border-2 lg:p-2 lg:input-xl lg:w-full lg:my-3"
+              >
+                <option value="" disabled>
+                  Sélectionnez une heure
+                </option>
+                {times?.map((time, i) => (
+                  <option value={format(time, "HH:mm")} key={`time-${i}`}>
+                    {format(time, "HH:mm")}
+                  </option>
+                ))}
+              </select>
+              <button
+                type="submit"
+                className="my-3  btn bg-blue-900 border-none text-white"
+              >
+                Réserver
+              </button>
+            </form>
+          </>
+        )}
+      </div>
+    </>
   );
 }
 export default Calendrier;
